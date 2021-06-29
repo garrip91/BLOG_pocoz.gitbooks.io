@@ -25,10 +25,14 @@ from django.views.generic import ListView
                   # 'posts': posts})
 class PostListView(ListView):
     
-    queryset = Post.objects.all()
-    context_object_name = 'posts'
-    paginate_by = 3
+    # queryset = Post.objects.all()
+    # context_object_name = 'posts'
+    # paginate_by = 3
+    # template_name = 'blog/post/list.html'
+    model = Post
+    context_object_name = 'object_list'
     template_name = 'blog/post/list.html'
+    paginate_by = 3
     
     
 def post_detail(request, year, month, day, post):
