@@ -1,1 +1,1 @@
-https://pythonru.com/primery/blog-na-django-22-rendering-form-v-shablonah
+https://pythonru.com/primery/blog-na-django-28-sozdanie-tegov-shablonizatora
