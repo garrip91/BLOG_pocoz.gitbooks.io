@@ -95,8 +95,8 @@ def post_share(request, post_id):
             # Поля формы прошли проверку...
             cd = form.cleaned_data
             post_url = request.build_absolute_uri(post.get_absolute_url)
-            subject = '{} ({}) recommends you reading " {}"'.format(cd['name'], cd['email'], post.title)
-            message = 'Read "{}" at {}\n\n{}\'s comments: {}'.format(post.title, post_url, cd['name'], cd['comments'])
+            subject = F"{cd['name']} ({cd['email']}) recommends you reading \" {post.title}\""
+            message = F"Read \"{post.title}\" at {post_url}\n\n{cd['name']}\'s comments: {cd['comments']}"
             send_mail(subject, message, 'garrip91@yandex.ru', [cd['to']])
             sent = True
             # ...отправить письмо
