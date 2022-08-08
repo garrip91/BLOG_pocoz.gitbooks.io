@@ -18,11 +18,7 @@ from django.urls import path
 
 from blog.views import post_detail
 
-<<<<<<< HEAD
-from django.urls import include, path
-=======
 from django.urls import path, include
->>>>>>> 2f9b4b71edc9d9de46681719f1eae19695a672b5
 
 
 urlpatterns = [
