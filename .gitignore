@@ -1,8 +1,4 @@
 __pycache__/
 *.pyc
 db.sqlite3
-<<<<<<< HEAD
 .env
-=======
-SECRET_KEY.py
->>>>>>> 2f9b4b71edc9d9de46681719f1eae19695a672b5
