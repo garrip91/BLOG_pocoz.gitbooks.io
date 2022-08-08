@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import os
+import environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,11 +22,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False),
+    EMAIL_PORT=(int, 0),
+    EMAIL_USE_TLS=(bool, False),
+    EMAIL_USE_SSL=(bool, False)
+)
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dv4__u&7x5)4eu2xo_lv=ij3#s40pv-0a0wf9#%c!p4jx8&+#i'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -127,26 +140,10 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# SERVER_EMAIL = 'garrip91@yandex.ru'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
-# EMAIL_HOST = 'smtp.yandex.ru' 
-# EMAIL_HOST_USER = 'garrip91@yandex.ru'
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# EMAIL_HOST_PASSWORD = 'Pass737862' 
-# EMAIL_PORT = 465
-
-# Из отдельной консоли запустить: python -m smtpd -n -c DebuggingServer localhost:25
-# EMAIL_HOST = 'localhost'
-# EMAIL_PORT = 25
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yandex.ru'
-# EMAIL_PORT = 465
-# Для TLS нужен порт 587:
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "garrip91"
-EMAIL_HOST_PASSWORD = "adfncevtkmfelnne"
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')

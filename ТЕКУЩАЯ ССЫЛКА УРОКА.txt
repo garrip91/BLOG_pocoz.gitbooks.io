@@ -1,1 +1,0 @@
-https://pythonru.com/primery/blog-na-django-28-sozdanie-tegov-shablonizatora
